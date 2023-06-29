@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            border: none;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(31, 32, 41);
+            background-image: url(/Image/baogao1.jpg);
+        }
+
+        .shell {
+            width: 300px;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .top {
+            width: 300px;
+            display: flex;
+            cursor: pointer;
+            justify-content: space-evenly;
+        }
+
+        .off,
+        .on {
+            color: #fff;
+            transition: .5s;
+            font: 300 20px '';
+        }
+
+        .on {
+            opacity: .5;
+        }
+
+        .button {
+            width: 60px;
+            height: 25px;
+            background-color: rgba(255, 235, 167);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .ball {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: rgba(46, 45, 56);
+            border-radius: 50%;
+            transition: .5s;
+            box-shadow: 0 0 10px #000;
+            left: 0;
+            transform: translate(-1px);
+        }
+
+        .bottom {
+            width: 300px;
+            height: 250px;
+            background-image: url(/Image/background.jpg);
+            transform-style: preserve-3d;
+            position: relative;
+            transition: .7s;
+            border-radius: 5px;
+        }
+
+        .bottom>div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .bottom>div h2 {
+            color: #fff;
+        }
+
+        .bottom>div input {
+            width: 200px;
+            height: 25px;
+            padding: 0 10px;
+            background-color: rgba(31, 32, 41);
+            color: #fff;
+        }
+
+        .bottom>div button {
+            width: 80px;
+            height: 30px;
+            color: #333;
+            font-size: 15px;
+            background-color: rgba(255, 235, 167);
+            border-radius: 4px;
+            transition: .3s;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .bottom>div button:hover {
+            box-shadow: 0 0 10px rgba(255, 235, 167);
+        }
+
+        .signIn {
+            transform: translateZ(70px);
+        }
+
+        .signUp {
+            position: absolute;
+            top: 0;
+            transform: translateZ(-70px) rotateY(180deg);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shell">
+        <div class="top">
+            <span class="off">SIGN IN</span>
+            <div class="button">
+                <div class="ball"></div>
+            </div>
+            <span class="on">SIGN UP</span>
+        </div>
+        <div class="bottom">
+            <div class="signIn">
+                <h2>Sign in</h2>
+                <input type="text" id="signin-username" placeholder="Username">
+                <input type="password" id="signin-password" placeholder="Password">
+                <button id="signin-button">GO</button>
+            </div>
+            <div class="signUp hidden">
+                <h2>Sign up</h2>
+                <input type="text" id="signup-username" placeholder="Username">
+                <input type="password" id="signup-password" placeholder="Password">
+                <input type="password" id="signup-confirm-password" placeholder="Confirm Password">
+                <button id="signup-button">GO</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let button = document.querySelector('.button');
+        let ball = document.querySelector('.ball');
+        let bottom = document.querySelector('.bottom');
+        let off = document.querySelector('.off');
+        let on = document.querySelector('.on');
+        let index = 0;
+
+        let signupUsername = '';
+        let signupPassword = '';
+
+        button.addEventListener('click', () => {
+            if (index === 0) {
+                index = 1;
+                ball.style.left = '61%';
+                on.style.opacity = '1';
+                off.style.opacity = '.5';
+                bottom.style.transform = 'rotateY(180deg)';
+            } else {
+                index = 0;
+                ball.style.left = '0%';
+                on.style.opacity = '.5';
+                off.style.opacity = '1';
+                bottom.style.transform = 'rotateY(0)';
+            }
+        });
+
+        let signupButton = document.getElementById('signup-button');
+        signupButton.addEventListener('click', () => {
+            let username = document.getElementById('signup-username').value;
+            let password = document.getElementById('signup-password').value;
+            let confirmPassword = document.getElementById('signup-confirm-password').value;
+            if (password === confirmPassword) {
+                signupUsername = username;
+                signupPassword = password;
+                alert('Registered successfully!');
+            } else {
+                alert('Passwords do not match!');
+            }
+        });
+
+        let signinButton = document.getElementById('signin-button');
+        signinButton.addEventListener('click', () => {
+            let username = document.getElementById('signin-username').value;
+            let password = document.getElementById('signin-password').value;
+            if (username === signupUsername && password === signupPassword && username != "" && password != "") {
+                alert('Logged in successfully!');
+                window.location.href = 'test1.html';
+
+                // 在这里可以实现页面跳转
+            } else {
+                alert('Invalid username or password!');
+            }
+        });
+    </script>
+</body>
+
+</html>

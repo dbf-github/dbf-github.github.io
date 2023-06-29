@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web学习结业报告</title>
+    <style>
+        /* 页面样式 */
+        body {
+            /* font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px; */
+            background-image: url(/Image/baogao1.jpg);
+            /* background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      color: #fff; */
+        }
+
+
+        /* 导航栏样式 */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(60, 60, 70);
+            box-shadow: 2px 5px 15px rgb(0, 0, 0, .7);
+            border-radius: 10px;
+        }
+
+        .navbar a {
+            width: 150px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 30px;
+            text-decoration: none;
+            color: seashell;
+        }
+
+        .navbar .active {
+            background-color: rgb(100, 100, 130);
+        }
+
+        /* 报告样式 */
+        .web-container {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        h1 {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .blog-post {
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 20px;
+            text-align: justify;
+        }
+
+        .blog-post:last-child {
+            border-bottom: none;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-to-top:hover,
+        .back-to-top:focus {
+            background-color: #555;
+            color: #fff;
+        }
+
+        .back-to-top-icon {
+            width: 30px;
+            height: 30px;
+            background-image: url(/Image/up.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+    </style>
+    <script>
+        // 导航栏相关代码
+        var navItems = document.querySelectorAll('.navbar a');
+        navItems.forEach(function (item) {
+            item.addEventListener('click', function (event) {
+                event.preventDefault();
+                var currentItem = event.target;
+                navItems.forEach(function (item) {
+                    item.classList.remove('active');
+                });
+                currentItem.classList.add('active');
+                // 检查当前点击的链接是否指向 test2.html
+                if (currentItem.getAttribute('href') === 'test1.html') {
+                    window.location.href = 'test1.html'; // 跳转到 test1.html 页面
+                }
+                else if (currentItem.getAttribute('href') === 'test2.html') {
+                    window.location.href = 'test2.html'; // 跳转到 test2.html 页面
+                }
+                else if (currentItem.getAttribute('href') === 'test3.html') {
+                    window.location.href = 'test3.html'; // 跳转到 test3.html 页面
+                }
+                else {
+                    window.location.href = 'test4.html'; // 跳转到 test4.html 页面
+                }
+
+            });
+        });
+        // 回到顶部的控件
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="test1.html">轮播图</a>
+        <a href="test2.html">选项卡</a>
+        <a href="test3.html">翻页动画</a>
+        <a href="#">结业报告</a>
+    </div>
+    <div class="web-container">
+        <header>
+            <h1>《Web应用基础》课程结业报告</h1>
+        </header>
+
+        <div class="blog-post">
+            <h2>Web设计和开发</h2>
+            <p>在本学期的web应用基础课程中，我完成了一个web作业，实现了以下功能：</p>
+            <ol>
+                <li>登录注册页面：我设计了一个登录注册页面，在该页面中可以实时注册，根据注册的用户名和密码进行登录验证。当验证成功时，页面会跳转到其他页面。</li>
+                <li>
+                    四个页面：
+                    <ul>
+                        <li>轮播图页面：该页面每隔一定时间就会切换图片，同时也可以通过鼠标滚轮来切换图片。</li>
+                        <li>选项卡页面：该页面分为shell-top和shell-bottom两部分。当点击shell-bottom部分的选项时，可以切换shell-top部分的内容。</li>
+                        <li>翻页动画页面：该页面实现了点击图片达到翻页的动态效果。</li>
+                        <li>结业报告页面：我选择在第四个页面写下这份结业报告，用于阐述我的开发过程、遇到的问题以及总结。</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="blog-post">
+            <h2>遇到的问题（已解决）：</h2>
+            <ol>
+                <li>最开始我设计了一个导航栏和其他的四个页面，我想把导航栏添加到每个页面的顶部，能够实现页面跳转同时保持导航栏样式不变。一开始我无法解决，后来，我通过两个定义容器来放置导航栏和其他页面，使用的css只负责各自容器，实现了样式互不干扰。
+                </li>
+                <li>选项卡和导航栏整合之后，选项卡的样式出了问题。Shell-top中的图片右偏不居中，且shell-top部分出现竖直滑轮条，严重影响观感。后来，我发现是原来的选项卡页面的body样式在整合后被丢弃了，缺少了padding:0，margin:0和list-style:none属性，导致shell-top的图片无法居中。
+                </li>
+                <li>轮播图的图片定时切换，最开始我无法实现，后来通过上网搜索，找到了定时的方法。</li>
+                <li>对于翻页动画页面，我遇到了如何实现点击图片翻页的问题。通过使用CSS的transform属性和JavaScript的事件监听器，我成功实现了点击图片达到翻页的效果。</li>
+            </ol>
+        </div>
+
+        <div class="blog-post">
+            <h2>遇到的问题（未解决）：</h2>
+            <ol>
+                <li>我发现翻页动画页面的图片加载到翻动的书页上时，同一张“纸”的两面的图片是一样的，而且，翻页结束后的左侧页的图片会变更成第一页的图片。我试了很多办法，还是无法解决，所以在演示的时候也会出现这种情况。
+                </li>
+                <li>我原先设计的导航栏会有一个动态滑块显示当前的导航项，但是导航栏与其他页面合并的时候，滑块的动态滑动消失了，无法实现我想要的效果。</li>
+                <li>因为我是简单的if判断，所以没有办法实现注册账户的保留（未使用数据库技术），页面跳转后如何保留登录状态、使用之前注册的账户登录还是有待解决的问题。</li>
+            </ol>
+        </div>
+
+        <div class="blog-post">
+            <h2>总结</h2>
+            <p>在这个项目中，我学到了很多关于web应用开发的知识和技巧。通过实践，我掌握了登录注册页面的设计和验证、页面跳转、动态效果的实现等技能。更加深刻理解了css和javascript，能较好掌握和运用相关代码。我深刻体会到了开发过程中遇到问题的重要性，通过不断努力和学习，我能够解决这些问题并实现预期的功能。总结起来，本学期的web应用基础课程为我提供了宝贵的学习和实践机会。我通过完成这个web作业，不仅巩固了所学的知识，还提升了自己的实际操作能力。我相信这些经验和技能将对我今后的学习和职业发展有很大的帮助。
+            </p>
+        </div>
+
+        <button class="back-to-top" onclick="scrollToTop()">
+            <span class="back-to-top-icon"></span>
+        </button>
+    </div>
+</body>
+
+</html>
